@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>OAuth Authorization Code</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 2em; }
+        .code { font-weight: bold; color: #2a5d84; }
+        .state { font-weight: bold; color: #6a2a84; }
+    </nstyle>
+</head>
+<body>
+    <h1>OAuth Authorization Code</h1>
+    <p id="output">Waiting for parameters...</p>
+    <script>
+        // Parse query parameters from the URL
+        const params = new URLSearchParams(window.location.search);
+        const code = params.get('code');
+        const state = params.get('state');
+        const output = document.getElementById('output');
+        if (code) {
+            output.textContent = `Authorization code: ${code}, state: ${state}`;
+        } else {
+            output.textContent = 'No code found in URL.';
+        }
+    </script>
+</body>
+</html>
